@@ -13,12 +13,36 @@
   </style>
 </head>
 <body>
-
+<div class="file-input-container">
+  <input type="file" id="fileInput" accept=".txt" />
+  <button onclick="loadText()">Load Text</button>
+</div>
 <div id="textContainer" tabindex=0>
   This is some text.
 </div>
 
 <script>
+function loadText() {
+    const fileInput = document.getElementById('fileInput');
+    
+    const file = fileInput.files[0];
+    
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function (e) {
+            const textContent = e.target.result;
+            displayText(textContent);
+        };
+        
+        reader.readAsText(file);
+    }
+}
+
+function displayText(text) {
+    textContainer.innerHTML = `<p>${text}</p>`;
+}
+  
   // Get the text container
   let textContainer = document.getElementById('textContainer');
 
