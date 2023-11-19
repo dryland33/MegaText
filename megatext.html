@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<div id="textContainer">
+<div id="textContainer" tabindex=0>
   This is some text.
 </div>
 
@@ -44,6 +44,8 @@
 
   // Listen for the "keydown" event on the document
   document.addEventListener('keydown', adjustFontSize);
+
+  document.getElementById("textContainer").focus();
 </script>
 
 </body>
